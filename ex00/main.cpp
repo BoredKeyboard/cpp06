@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/03 15:30:01 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/08 14:23:16 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/10 14:02:13 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int	main(int argc, char *argv[]) {
 	// stream.str("145");
 	// stream >> i;
 	// std::cout << i << std::endl;
-	ScalarConverter test;
-	test.convert(argv[1]);
+	ScalarConverter::convert(argv[1]);
 }

@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:39 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/08 15:47:57 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/10 17:45:32 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,67 @@ ScalarConverter & ScalarConverter::operator=(ScalarConverter const & src) {
 	return (*this);
 }
 
-void	ScalarConverter::convertChar(std::string str) {
-	if (str.length() != 1) {
-		std::cout << "char: Impossible" << std::endl;
+char	ScalarConverter::convertChar(std::string str) {
+	if (str == "nan") {
+		std::cout << "char: impossible" << std::endl;
 		return ;
 	}
-	char c = *str.cbegin();
+	if (!std::isprint((int)str[0])) {
+		std::cout << "char: Non displayable" << std::endl;
+		return ;
+	}
+	char c = str[0];
 	std::cout << "char: " << c << std::endl;
 }
 
-void	ScalarConverter::convertInt(std::string str) {
+int		ScalarConverter::convertInt(std::string str) {
 	std::stringstream ss;
 	int	result;
 
+	if (str == "nan") {
+		std::cout << "int: impossible" << std::endl;
+		return ;
+	}
 	ss << str;
 	ss >> result;
 	std::cout << "int: " << result << std::setprecision(2) << std::endl;
 }
 
-void	ScalarConverter::convertFloat(std::string str) {
+float	ScalarConverter::convertFloat(std::string str) {
 	std::stringstream ss;
 	float	result;
 
+	if (str == "nan") {
+		std::cout << "float: nanf" << std::endl;
+		return ;
+	}
 	ss << str;
 	ss >> result;
-	std::cout << "float: " << result << std::setprecision(2) << std::endl;
+	std::cout << std::setprecision(4) << "float: " << result << "f" << std::endl;
 }
 
-void	ScalarConverter::convertDouble(std::string str) {
+double	ScalarConverter::convertDouble(std::string str) {
 	std::stringstream ss;
 	double	result;
 
+	if (str == "nan") {
+		std::cout << "double: nan" << std::endl;
+		return ;
+	}
 	ss << str;
 	ss >> result;
-	std::cout << "double: " << result << std::setprecision(5) << std::setw(7) << std::endl;
+	std::cout << std::setprecision(4) << "double: " << result << std::endl;
 }
 
 void	ScalarConverter::convert(std::string src) {
-	ScalarConverter::convertChar(src);
+	char c;
+	int i;
+	float f;
+	double d;
+	if (true) {
+		c = ScalarConverter::convertChar(src);
+		i = static_cast<int>(c);
+	}
 	ScalarConverter::convertInt(src);
 	ScalarConverter::convertFloat(src);
 	ScalarConverter::convertDouble(src);
