@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:20 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/10 14:07:12 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/22 15:29:51 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 # include <string>
 # include <sstream>
 # include <iomanip>
+# include <cmath>
 
 class ScalarConverter {
 	private:
-		static char		convertChar(std::string str);
-		static int		convertInt(std::string str);
-		static float	convertFloat(std::string str);
-		static double	convertDouble(std::string str);
+		static void	convertChar(std::string str);
+		static void	convertInt(std::string str);
+		static void	convertFloat(std::string str);
+		static void	convertDouble(std::string str);
+		// void		parse(std::string src);
 	public:
 		static void	convert(std::string src);
 		ScalarConverter(void);
