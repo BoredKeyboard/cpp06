@@ -6,11 +6,14 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:39 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/22 15:39:05 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/23 15:50:06 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+bool ScalarConverter::is_float = false;
+bool ScalarConverter::is_double = false;
+bool ScalarConverter::is_int = false;
 
 ScalarConverter::ScalarConverter(void) {
 }
@@ -178,6 +181,24 @@ void	ScalarConverter::convertDouble(std::string str) {
 	}
 }
 
+void	ScalarConverter::print_result(int &i, double &d, float &f, char &c) {
+	if (std::isprint(c)) {
+		std::cout << "char: " << c << std::endl;
+	}
+	else {
+		std::cout << "char: Non displayable" << std::endl;
+	}
+	std::cout << "int: " << i << std::endl;
+	if (f_rounded == f) {
+		std::cout << "float: " << f << ".0f" << std::endl;
+		std::cout << "double: " << d << ".0" << std::endl;
+	}
+	else {
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
+	}
+}
+
 bool isFloat(std::string myString) {
     std::istringstream iss(myString);
     float f;
@@ -194,38 +215,67 @@ bool isDouble(std::string myString) {
     return iss.eof() && !iss.fail();
 }
 
-// void	ScalarConverter::parse(std::string src) {
-// 	if (isFloat(src) == 0) {
-// 		std::cout << "float" << std::endl;
-// 		// ScalarConverter::convertFloat(src);
-// 	}
-// 	else if (isDouble(src) == 0) {
-// 		std::cout << "double" << std::endl;
-// 	}
-// 	else if (std::isdigit(src[0])) {
-// 		std::cout << "int" << std::endl;
-// 	}
-// 	else if (isprint(src[0])) {
-// 		std::cout << "char" << std::endl;
-// 	}
-// }
+int	ScalarConverter::digit_check(std::string src) {	// check for every character if it is possible in an int/float/double. Otherwise it is a char/impossible.
+	bool	has_decimal = false;
+	for (unsigned long i = 0; i < src.length(); i++) {
+		if (!std::isdigit(src[i])) {
+			if ((src[i] == '+' || src[i] == '-') && i == 0) {
+				continue ;
+			}
+			if (src[i] == '.') {
+				has_decimal = true;
+				continue ;
+			}
+			if (src[i] == 'f' && i == src.length() - 1) {
+				continue ;
+			}
+			return CHAR;
+		}
+	}
+	if (src[src.length() - 1] == 'f') {	// lengte 0??
+		return FLOAT;
+	}
+	else if (has_decimal) {
+		return DOUBLE;
+	}
+	else {
+		return INT;
+	}
+	return INT;
+}
+
+void	ScalarConverter::determine_type(std::string src) {
+	switch (ScalarConverter::digit_check(src)) {
+		case (FLOAT) : {
+			// float
+			std::cout << "float" << std::endl;
+			ScalarConverter::convertFloat(src);
+			break ;
+		}
+		case (DOUBLE) : {
+			// double
+			std::cout << "double" << std::endl;
+			ScalarConverter::convertDouble(src);
+			break ;
+		}
+		case (INT) : {
+			// int
+			std::cout << "int" << std::endl;
+			ScalarConverter::convertInt(src);
+			break ;
+		}
+		case (CHAR) : {
+			// char
+			std::cout << "char" << std::endl;
+			ScalarConverter::convertChar(src);
+			break ;
+		}
+	}
+}
 
 void	ScalarConverter::convert(std::string src) {
-	if (isFloat(src) == 1) {
-		std::cout << "float" << std::endl;
-		ScalarConverter::convertFloat(src);
-	}
-	else if (isDouble(src) == 0) {
-		std::cout << "double" << std::endl;
-		ScalarConverter::convertDouble(src);
-	}
-	else if (std::isdigit(src[0])) {
-		std::cout << "int" << std::endl;
-		ScalarConverter::convertInt(src);
-	}
-	else if (isprint(src[0])) {
-		std::cout << "char" << std::endl;
-		ScalarConverter::convertChar(src);
-	}
-	// this->parse(src);
+	ScalarConverter::is_int = false;
+	ScalarConverter::is_double = false;
+	ScalarConverter::is_float = false;
+	ScalarConverter::determine_type(src);
 }
