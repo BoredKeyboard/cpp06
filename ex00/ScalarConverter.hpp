@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:20 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/23 15:49:54 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/24 13:53:12 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@
 
 class ScalarConverter {
 	private:
-		static void	convertChar(std::string str);
-		static void	convertInt(std::string str);
-		static void	convertFloat(std::string str);
-		static void	convertDouble(std::string str);
-		static void	print_result(int &i, double &d, float &f, char &c);
-		static bool	is_int;
-		static bool	is_double;
-		static bool	is_float;
-		// void		parse(std::string src);
+		static void	convertChar(std::string str, int &i, double &d, float &f, char &c);
+		static void	convertInt(std::string str, int &i, double &d, float &f, char &c);
+		static void	convertFloat(std::string str, int &i, double &d, float &f, char &c);
+		static void	convertDouble(std::string str, int &i, double &d, float &f, char &c);
+		static void	print_result(int i, double d, float f, char c);
+		static bool	special_cases(std::string src);
 	public:
 		static int	digit_check(std::string src);
 		static void	determine_type(std::string src);
@@ -44,7 +41,8 @@ class ScalarConverter {
 			INT,
 			DOUBLE,
 			FLOAT,
-			CHAR
+			CHAR,
+			UNKNOWN
 		}	datatype;
 };
 
