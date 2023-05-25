@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 16:34:40 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/24 16:36:55 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/25 13:08:51 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ class C : public Base {
 
 	public:
 		C(void);
-		C(C const & src);
 		virtual ~C(void);
-		C & operator=(C const & src);
 };
 
 #endif

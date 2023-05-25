@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 16:34:06 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/24 16:42:17 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/25 13:12:06 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ class Base {
 	private:
 
 	public:
-		Base * generate(void);
-		void identify(Base* p);
-		void identify(Base& p);
+		static Base * generate(void);
+		static void identify(Base* p);
+		static void identify(Base& p);
 		virtual ~Base(void);
 };
 

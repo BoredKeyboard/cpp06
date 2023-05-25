@@ -6,11 +6,11 @@
 #    By: mforstho <mforstho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/31 11:22:02 by mforstho      #+#    #+#                  #
-#    Updated: 2023/05/24 16:24:06 by mforstho      ########   odam.nl          #
+#    Updated: 2023/05/25 13:08:04 by mforstho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := serializer
+NAME := typecheck
 CC := c++
 CFLAGS ?= -Wextra -Wall -Werror -std=c++98 -pedantic #-fsanitize=address -g
 
