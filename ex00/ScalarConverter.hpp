@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:20 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/24 13:53:12 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/05/25 18:10:30 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ class ScalarConverter {
 		static void	convertDouble(std::string str, int &i, double &d, float &f, char &c);
 		static void	print_result(int i, double d, float f, char c);
 		static bool	special_cases(std::string src);
-	public:
 		static int	digit_check(std::string src);
 		static void	determine_type(std::string src);
+	public:
 		static void	convert(std::string src);
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & src);
