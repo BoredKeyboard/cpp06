@@ -6,10 +6,10 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 15:04:30 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/24 15:08:09 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/06/26 17:12:04 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_data {
+struct Data {
 	int	nbr;
-}	Data;
+};
