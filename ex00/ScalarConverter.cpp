@@ -6,7 +6,7 @@
 /*   By: mforstho <mforstho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:11:39 by mforstho      #+#    #+#                 */
-/*   Updated: 2023/05/24 16:09:48 by mforstho      ########   odam.nl         */
+/*   Updated: 2023/07/28 13:46:28 by mforstho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,25 +212,25 @@ void	ScalarConverter::determine_type(std::string src) {
 	switch (ScalarConverter::digit_check(src)) {
 		case (FLOAT) : {
 			// float
-			std::cout << "float" << std::endl;
+			// std::cout << "float" << std::endl;
 			ScalarConverter::convertFloat(src, i, d, f, c);
 			break ;
 		}
 		case (DOUBLE) : {
 			// double
-			std::cout << "double" << std::endl;
+			// std::cout << "double" << std::endl;
 			ScalarConverter::convertDouble(src, i, d, f, c);
 			break ;
 		}
 		case (INT) : {
 			// int
-			std::cout << "int" << std::endl;
+			// std::cout << "int" << std::endl;
 			ScalarConverter::convertInt(src, i, d, f, c);
 			break ;
 		}
 		case (CHAR) : {
 			// char
-			std::cout << "char" << std::endl;
+			// std::cout << "char" << std::endl;
 			ScalarConverter::convertChar(src, i, d, f, c);
 			break ;
 		}
